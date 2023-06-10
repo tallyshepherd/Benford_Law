@@ -1,0 +1,150 @@
+//print cords is a helper funtion of draw_hist, and outputs the #s on the 
+//histogram
+//requires: height to be a positive integer >= 0
+void print_cords(int height, int c_0, int c_1, int c_2, int c_3, int c_4,
+               int c_5, int c_6, int c_7, int c_8, int c_9){
+  if(c_0 >= height){
+    printf(" #");
+  }
+  else {
+    printf("  ");
+  }
+  
+  if(c_1>=height){
+    printf(" #");
+  }
+    else {
+    printf("  ");
+  }
+  if(c_2>=height){
+    printf(" #");
+  }
+    else {
+    printf("  ");
+  }
+  if(c_3>=height){
+    printf(" #");
+  }
+    else {
+    printf("  ");
+  }
+  if(c_4>=height){
+    printf(" #");
+  }
+    else {
+    printf("  ");
+  }
+  if(c_5>=height){
+    printf(" #");
+  }
+    else {
+    printf("  ");
+  }
+  if(c_6>=height){
+    printf(" #");
+  }
+    else {
+    printf("  ");
+  }
+  if(c_7>=height){
+    printf(" #");
+  }
+    else {
+    printf("  ");
+  }
+  if(c_8>=height){
+    printf(" #");
+  }
+    else {
+    printf("  ");
+  }
+  if(c_9>=height){
+    printf(" #");
+  }
+    else {
+    printf("  ");
+  }
+  
+                 
+                 
+               }
+
+//print_yaxis prints the y-axis of the histogram
+//requires: height >= 0
+void print_yaxis (int height, int c_0, int c_1, int c_2, int c_3, int c_4,
+               int c_5, int c_6, int c_7, int c_8, int c_9){
+  if(height == 0){
+    printf("");
+  }
+  
+  else if(height%5 == 0){
+    printf("%2d |", height);
+    print_cords(height,   c_0,  c_1,  c_2,  c_3,  c_4,
+                c_5,  c_6,  c_7,  c_8,  c_9);
+    printf("\n");
+    print_yaxis(height - 1,   c_0,  c_1,  c_2,  c_3,  c_4,
+                c_5,  c_6,  c_7,  c_8,  c_9);
+  }
+  else{
+    printf("   |");
+    print_cords(height,   c_0,  c_1,  c_2,  c_3,  c_4,
+                c_5,  c_6,  c_7,  c_8,  c_9);
+    printf("\n");
+    print_yaxis(height - 1,   c_0,  c_1,  c_2,  c_3,  c_4,
+                c_5,  c_6,  c_7,  c_8,  c_9);
+  }
+  
+}
+
+
+//print_xaxis prints the x-axis of the histogram
+void print_xaxis(){
+  printf("   +--------------------\n");
+  printf("     0 1 2 3 4 5 6 7 8 9\n");
+}
+
+//draw_hist outputs a histogram with a # indicating the amount of occurences of
+//each value c_0~9
+//requires values c_0~9 to be >= 0
+
+void draw_hist(int c_0, int c_1, int c_2, int c_3, int c_4,
+               int c_5, int c_6, int c_7, int c_8, int c_9) {
+  int max = c_0;
+  
+  if(c_1 > max){
+    max = c_1;
+  }
+  if(c_2 > max){
+    max = c_2;
+  }
+  if(c_3 > max){
+    max = c_3;
+  }
+  if(c_4 > max){
+    max = c_4;
+  }
+  if(c_5 > max){
+    max = c_5;
+  }
+  if(c_6 > max){
+    max = c_6;
+  }
+  if(c_7 > max){
+    max = c_7;
+  }
+  if(c_8 > max){
+    max = c_8;
+  }
+  if(c_9 > max){
+    max = c_9;
+  }
+  
+  print_yaxis(max,  c_0,  c_1,  c_2,  c_3,  c_4,
+                c_5,  c_6,  c_7,  c_8,  c_9);
+  print_xaxis();
+}
+
+int main(void) {
+  draw_hist(0, 1, 2, 1, 5, 0, 0, 0, 1, 0);
+  draw_hist(9, 8, 7, 6, 5, 4, 3, 2, 1, 0);
+}
